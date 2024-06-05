@@ -96,7 +96,6 @@
 			{ text: "Type 'show experience' to review Experience\n", delay: 5 },
 			{ text: "Type 'show certifications' to review Certifications\n", delay: 5 },
 			{ text: "Type 'show education' to review Education\n", delay: 5 },
-			{ text: "Type 'show skills' to review Skills\n", delay: 5 },
 			{ text: 'Resume# ', delay: 5 }
 		],
 		
@@ -124,7 +123,7 @@
 			{ text: 'Date Aquired    :  May 2022\n', delay: 5 },
 			{ text: 'Date Exipres    :  May 2025\n', delay: 5 },
 			{ text: 'Description      :  Shows the holder has an understanding of cyberthreats and how to avoid them.\n', delay: 5 },
-			{ text: '', delay: 5 },
+			{ text: '\n', delay: 5 },
 			{ text: 'Resume# ', delay: 5 }
 		],
 		
@@ -133,6 +132,7 @@
 			{ text: 'Date Aquired    :  June 2022\n', delay: 5 },
 			{ text: 'School      :  Ocean Lakes High School\n', delay: 5 },
 			{ text: '\n', delay: 5 },
+			{ text: 'Resume# ', delay: 5 }
 		]
 	};
 
