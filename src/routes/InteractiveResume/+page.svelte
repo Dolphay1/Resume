@@ -4,6 +4,9 @@
 	import LinuxGuiTopBar from './LinuxGUITopBar.svelte';
 	import LinuxDesktopIcon from './LinuxDesktopIcon.svelte';
 	import LinuxTerminalGUI from './LinuxTerminalGUI.svelte';
+	import TrashDesktopIcon from '$lib/images/flat-remix/user-trash.svg'
+	import PDFFileIcon from '$lib/images/PDF_file_icon.png'
+	import HomeIcon from '$lib/images/flat-remix/folder_home.svg'
 	import { goto } from '$app/navigation';
 
 	let floatTopAnimation = 'float-top-in';
@@ -57,10 +60,6 @@
 				fullscreenToggle();
 
 				offsetLeft = (e.detail.pageX / window.innerWidth) * width;
-
-				console.log(e.detail.pageX);
-				console.log(window.innerWidth);
-				console.log(left);
 			}
 
 			left = e.detail.pageX - offsetLeft;
@@ -147,18 +146,18 @@
 	<div class={floatLeftAnimation}>
 		<LinuxDesktopIcon
 			fileName="Trash"
-			imagePath="/src/lib/images/flat-remix/user-trash.svg"
+			imagePath={TrashDesktopIcon}
 		/>
 		<LinuxDesktopIcon
 			fileName="PDF Resume"
-			imagePath="/src/lib/images/PDF_file_icon.png"
+			imagePath={PDFFileIcon}
 			on:dblclick={() => {
 				window.open('/Ryan%20Thornton%20Resume.pdf', '_blank')?.focus();
 			}}
 		/>
 		<LinuxDesktopIcon
 			fileName="Home"
-			imagePath="/src/lib/images/flat-remix/folder_home.svg"
+			imagePath={HomeIcon}
 			on:dblclick={returnToMainPage}
 		/>
 	</div>

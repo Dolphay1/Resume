@@ -25,14 +25,14 @@
 			on:click={() => onClickButton('/InteractiveResume')}
 			class="button large-button {fadeClass}">Interactive Resume</button
 		>
-		<div class="margin-big">
+		<!-- <div class="margin-big">
 			<button on:click={() => onClickButton('/WebResume')} class="button small-button {fadeClass}"
 				>Web Resume</button
 			>
 			<button on:click={downloadPDFResume} class="button small-button {fadeClass}"
 				>PDF Resume</button
 			>
-		</div>
+		</div> -->
 	</div>
 </section>
 

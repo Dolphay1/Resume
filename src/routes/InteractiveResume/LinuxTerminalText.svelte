@@ -126,6 +126,13 @@
 			{ text: 'Description      :  Shows the holder has an understanding of cyberthreats and how to avoid them.\n', delay: 5 },
 			{ text: '', delay: 5 },
 			{ text: 'Resume# ', delay: 5 }
+		],
+		
+		'show education': [
+			{ text: 'Degree     :  High School Diploma\n', delay: 5 },
+			{ text: 'Date Aquired    :  June 2022\n', delay: 5 },
+			{ text: 'School      :  Ocean Lakes High School\n', delay: 5 },
+			{ text: '\n', delay: 5 },
 		]
 	};
 
