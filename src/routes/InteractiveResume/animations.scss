@@ -1,0 +1,68 @@
+@mixin float-animation($name, $x1, $y1, $x2, $y2) {
+	@keyframes #{$name} {
+		from {
+			transform: translate($x1, $y1);
+		}
+		to {
+			transform: translate($x2, $y2);
+		}
+	}
+
+	.#{$name} {
+		@extend .animation-base;
+		animation-name: $name;
+	}
+}
+
+@keyframes zoom-in {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0);
+	}
+}
+
+@keyframes zoom-out {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+.animation-base {
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease;
+}
+
+.fade-in {
+	@extend .animation-base;
+	animation-name: fade-in;
+}
+
+.fade-out {
+	@extend .animation-base;
+	animation-name: fade-out;
+	animation-duration: 0.5s;
+}
+
+.zoom-in {
+	@extend .animation-base;
+	animation-duration: 0.2s;
+	animation-name: zoom-in;
+	transform-origin: top left;
+}
+
+.zoom-out {
+	animation-duration: 0.2s;
+	animation-name: zoom-out;
+	transform-origin: top left;
+}
+
+@include float-animation(float-top-in, 0%, -200%, 0%, 0%);
+@include float-animation(float-top-out, 0%, 0%, 0%, -200%);
+@include float-animation(float-left-in, -100%, 0%, 0%, 0%);
+@include float-animation(float-left-out, 0%, 0%, -100%, 0%);

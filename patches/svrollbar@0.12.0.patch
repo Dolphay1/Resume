@@ -1,0 +1,12 @@
+diff --git a/src/Svrollbar.svelte b/src/Svrollbar.svelte
+index 0dbe9c730741b626c428fe18fbcc1cbde850d1e9..8a501cbe04d38c83d0bf4b04af0428b8e87c3bee 100644
+--- a/src/Svrollbar.svelte
++++ b/src/Svrollbar.svelte
+@@ -299,7 +299,6 @@
+ <style>
+   .v-scrollbar {
+     position: absolute;
+-    top: 0;
+     right: 0;
+     width: var(--svrollbar-track-width, 10px);
+   }
