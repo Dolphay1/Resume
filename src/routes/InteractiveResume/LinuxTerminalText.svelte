@@ -83,7 +83,7 @@
 			delay: 5,
 			split: true
 		}
-	]
+	];
 
 	const COMMANDS: any = {
 		'show resume': [
@@ -98,35 +98,50 @@
 			{ text: "Type 'show education' to review Education\n", delay: 5 },
 			{ text: 'Resume# ', delay: 5 }
 		],
-		
+
 		'show experience': [
-			{ text: 'Start Date    Company        Title                       End Date   Years\n', delay: 5 },
+			{
+				text: 'Start Date    Company        Title                       End Date   Years\n',
+				delay: 5
+			},
 			{ text: 'May1/23       Leidos         Transport Specialist   current       1\n', delay: 5 },
 			{ text: 'Dec13/22      SAIC           IT Service Analyst     Apr28/23     0.4\n', delay: 5 },
-			{ text: 'Jul27/20      Starbucks      Barista                    Nov11/22     2\n', delay: 5 },
+			{
+				text: 'Jul27/20      Starbucks      Barista                    Nov11/22     2\n',
+				delay: 5
+			},
 			{ text: 'Resume# ', delay: 5 }
 		],
-		
+
 		'show certifications': [
 			{ text: 'Certification     :  Cisco Certified Network Associate\n', delay: 5 },
 			{ text: 'Date Aquired    :  March 2022\n', delay: 5 },
 			{ text: 'Date Exipres    :  April 2027\n', delay: 5 },
-			{ text: 'Description      :  Shows the holder has a basic understanding of routing and switching.\n', delay: 5 },
+			{
+				text: 'Description      :  Shows the holder has a basic understanding of routing and switching.\n',
+				delay: 5
+			},
 			{ text: '\n', delay: 5 },
 			{ text: 'Certification     :  Cisco Certified Specialist - Enterprise Core\n', delay: 5 },
 			{ text: 'Date Aquired    :  April 2024\n', delay: 5 },
 			{ text: 'Date Exipres    :  April 2027\n', delay: 5 },
-			{ text: 'Description      :  Shows the holder has a professional understanding of routing and switching.\n', delay: 5 },
+			{
+				text: 'Description      :  Shows the holder has a professional understanding of routing and switching.\n',
+				delay: 5
+			},
 			{ text: '                           First exam required to aquire CCNP.\n', delay: 5 },
 			{ text: '\n', delay: 5 },
 			{ text: 'Certification     :  CompTIA Security+ CE\n', delay: 5 },
 			{ text: 'Date Aquired    :  May 2022\n', delay: 5 },
 			{ text: 'Date Exipres    :  May 2025\n', delay: 5 },
-			{ text: 'Description      :  Shows the holder has an understanding of cyberthreats and how to avoid them.\n', delay: 5 },
+			{
+				text: 'Description      :  Shows the holder has an understanding of cyberthreats and how to avoid them.\n',
+				delay: 5
+			},
 			{ text: '\n', delay: 5 },
 			{ text: 'Resume# ', delay: 5 }
 		],
-		
+
 		'show education': [
 			{ text: 'Degree     :  High School Diploma\n', delay: 5 },
 			{ text: 'Date Aquired    :  June 2022\n', delay: 5 },
@@ -137,19 +152,22 @@
 	};
 
 	function displayText(displayCursor?: boolean) {
-		textToDisplay = text + (displayCursor && document.activeElement === textArea ? '▂' : '');
+		try {
+			textToDisplay = text + (displayCursor && document.activeElement === textArea ? '▂' : '');
+		}
+		catch (e) {}
 	}
 
 	function addTextToDisplay(displayTextData: string) {
 		text += displayTextData;
 		displayText(true);
-		
+
 		dispatch('text-displayed');
 	}
 
 	function writeDelay(textToWrite: string, delay: number, callback?: CallableFunction) {
 		setTimeout(() => {
-			addTextToDisplay(textToWrite)
+			addTextToDisplay(textToWrite);
 
 			if (callback) callback();
 		}, delay);
@@ -179,14 +197,13 @@
 
 	function runCommand(commandToRun: string) {
 		typable = false;
-		command = "";
+		command = '';
 
 		if (COMMANDS[commandToRun]) {
 			serializeText(COMMANDS[commandToRun], () => {
 				typable = true;
 			});
 
-			
 			return;
 		}
 
@@ -211,12 +228,11 @@
 				typable = true;
 			});
 		} else if (commandSuccess.length == 0) {
-			addTextToDisplay('Unknown command: ' + commandToRun + "\n")
+			addTextToDisplay('Unknown command: ' + commandToRun + '\n');
 			serializeText(PROMPT);
 			typable = true;
-		}
-		else if(commandSuccess.length > 1) {
-			addTextToDisplay('Amiguous command: ' + commandToRun + "\n")
+		} else if (commandSuccess.length > 1) {
+			addTextToDisplay('Amiguous command: ' + commandToRun + '\n');
 			serializeText(PROMPT);
 			typable = true;
 		}
@@ -245,7 +261,7 @@
 			/^([A-Za-z0-9 ]|Enter|Backspace)$/.test(e.key) &&
 			document.activeElement === textArea
 		) {
-			let textToAdd = ""
+			let textToAdd = '';
 			if (e.key == 'Backspace') {
 				if (command.length > 0) {
 					text = text.substring(0, text.length - 1);
@@ -284,7 +300,6 @@
 		padding: 0px 0px 0px 0px;
 		margin: 0px 0px 0px 0px;
 		box-shadow: 0px 0px 0px 0px;
-		
 	}
 	.terminal-text {
 		margin-left: 10px;
@@ -292,7 +307,10 @@
 		font-family: 'Lucida Sans Unicode';
 		user-select: contain;
 		white-space: pre-line;
-		overflow-x: hidden;
+	}
+
+	pre {
+		white-space: pre-wrap;
 	}
 
 	.terminal-text:focus {

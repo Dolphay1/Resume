@@ -175,8 +175,8 @@
 
 	.icon {
 		height: 30px;
-		margin-left: 5%;
-		margin-top: 5%;
+		margin-left: 5px;
+		margin-top: 5px;
 	}
 
 	.title-text {
