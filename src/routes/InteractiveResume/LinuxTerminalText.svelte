@@ -137,7 +137,7 @@
 	};
 
 	function displayText(displayCursor?: boolean) {
-		textToDisplay = text + (displayCursor ? '▂' : '');
+		textToDisplay = text + (displayCursor && document.activeElement === textArea ? '▂' : '');
 	}
 
 	function addTextToDisplay(displayTextData: string) {
