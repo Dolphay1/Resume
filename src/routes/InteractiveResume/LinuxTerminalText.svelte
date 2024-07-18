@@ -9,6 +9,7 @@
 	let dispatch = createEventDispatcher();
 
 	let cursorBlink = true;
+	let cursorBlindDisplay = '';
 	let typable = false;
 	let text = '';
 	let command = '';
@@ -101,41 +102,37 @@
 
 		'show experience': [
 			{
-				text: 'Start Date    Company        Title                       End Date   Years\n',
+				text: 'Start Date    Company        Title                   End Date     Years\n',
 				delay: 5
 			},
-			{ text: 'May1/23       Leidos         Transport Specialist   current       1\n', delay: 5 },
-			{ text: 'Dec13/22      SAIC           IT Service Analyst     Apr28/23     0.4\n', delay: 5 },
-			{
-				text: 'Jul27/20      Starbucks      Barista                    Nov11/22     2\n',
-				delay: 5
-			},
+			{ text: 'May1/23       Leidos         Transport Specialist    current      1\n', delay: 5 },
+			{ text: 'Dec13/22      SAIC           IT Service Analyst      Apr28/23     0.4\n', delay: 5 },
+			{ text: 'Jul27/20      Starbucks      Barista                 Nov11/22     2\n', delay: 5 },
 			{ text: 'Resume# ', delay: 5 }
 		],
 
 		'show certifications': [
-			{ text: 'Certification     :  Cisco Certified Network Associate\n', delay: 5 },
-			{ text: 'Date Aquired    :  March 2022\n', delay: 5 },
-			{ text: 'Date Exipres    :  April 2027\n', delay: 5 },
+			{ text: 'Certification     :  Cisco Certified Network Professional\n', delay: 5 },
+			{ text: 'Date Aquired      :  July 2024\n', delay: 5 },
+			{ text: 'Date Exipres      :  July 2027\n', delay: 5 },
 			{
-				text: 'Description      :  Shows the holder has a basic understanding of routing and switching.\n',
+				text: 'Description       :  Shows the holder has a professional understanding of routing and services.\n',
 				delay: 5
 			},
 			{ text: '\n', delay: 5 },
-			{ text: 'Certification     :  Cisco Certified Specialist - Enterprise Core\n', delay: 5 },
-			{ text: 'Date Aquired    :  April 2024\n', delay: 5 },
-			{ text: 'Date Exipres    :  April 2027\n', delay: 5 },
+			{ text: 'Certification     :  Cisco Certified Network Associate\n', delay: 5 },
+			{ text: 'Date Aquired      :  March 2022\n', delay: 5 },
+			{ text: 'Date Exipres      :  April 2027\n', delay: 5 },
 			{
-				text: 'Description      :  Shows the holder has a professional understanding of routing and switching.\n',
+				text: 'Description       :  Shows the holder has a basic understanding of routing and switching.\n',
 				delay: 5
 			},
-			{ text: '                           First exam required to aquire CCNP.\n', delay: 5 },
 			{ text: '\n', delay: 5 },
 			{ text: 'Certification     :  CompTIA Security+ CE\n', delay: 5 },
-			{ text: 'Date Aquired    :  May 2022\n', delay: 5 },
-			{ text: 'Date Exipres    :  May 2025\n', delay: 5 },
+			{ text: 'Date Aquired      :  May 2022\n', delay: 5 },
+			{ text: 'Date Exipres      :  May 2025\n', delay: 5 },
 			{
-				text: 'Description      :  Shows the holder has an understanding of cyberthreats and how to avoid them.\n',
+				text: 'Description       :  Shows the holder has an understanding of cyberthreats and how to avoid them.\n',
 				delay: 5
 			},
 			{ text: '\n', delay: 5 },
@@ -143,9 +140,9 @@
 		],
 
 		'show education': [
-			{ text: 'Degree     :  High School Diploma\n', delay: 5 },
+			{ text: 'Degree          :  High School Diploma\n', delay: 5 },
 			{ text: 'Date Aquired    :  June 2022\n', delay: 5 },
-			{ text: 'School      :  Ocean Lakes High School\n', delay: 5 },
+			{ text: 'School          :  Ocean Lakes High School\n', delay: 5 },
 			{ text: '\n', delay: 5 },
 			{ text: 'Resume# ', delay: 5 }
 		]
@@ -153,9 +150,9 @@
 
 	function displayText(displayCursor?: boolean) {
 		try {
-			textToDisplay = text + (displayCursor && document.activeElement === textArea ? '▂' : '');
-		}
-		catch (e) {}
+			textToDisplay = text;
+			cursorBlindDisplay = displayCursor && document.activeElement === textArea ? '_' : ' ';
+		} catch (e) {}
 	}
 
 	function addTextToDisplay(displayTextData: string) {
@@ -286,6 +283,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div class="terminal-text" tabindex="1" bind:this={textArea}>
 	<pre>{textToDisplay}</pre>
+	<div style="display:inline">{cursorBlindDisplay}</div>
 </div>
 
 <svelte:window on:keydown={onKeyDown} />
@@ -294,17 +292,19 @@
 	pre {
 		background-color: transparent;
 		font-size: larger;
-		font-family: 'Lucida Sans Unicode';
+		font-family: monospace;
 		color: white;
 		border-color: transparent;
 		padding: 0px 0px 0px 0px;
 		margin: 0px 0px 0px 0px;
 		box-shadow: 0px 0px 0px 0px;
+		display: inline;
+		padding-bottom: 10px
 	}
 	.terminal-text {
 		margin-left: 10px;
 		font-size: larger;
-		font-family: 'Lucida Sans Unicode';
+		font-family: monospace;
 		user-select: contain;
 		white-space: pre-line;
 	}
