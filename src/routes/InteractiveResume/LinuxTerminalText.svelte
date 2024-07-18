@@ -122,7 +122,7 @@
 			{ text: '\n', delay: 5 },
 			{ text: 'Certification     :  Cisco Certified Network Associate\n', delay: 5 },
 			{ text: 'Date Aquired      :  March 2022\n', delay: 5 },
-			{ text: 'Date Exipres      :  April 2027\n', delay: 5 },
+			{ text: 'Date Exipres      :  July 2027\n', delay: 5 },
 			{
 				text: 'Description       :  Shows the holder has a basic understanding of routing and switching.\n',
 				delay: 5
