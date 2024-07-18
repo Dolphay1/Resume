@@ -151,7 +151,7 @@
 	function displayText(displayCursor?: boolean) {
 		try {
 			textToDisplay = text;
-			cursorBlindDisplay = displayCursor && document.activeElement === textArea ? '_' : ' ';
+			cursorBlindDisplay = displayCursor ? '_' : ' ';
 		} catch (e) {}
 	}
 
@@ -253,11 +253,7 @@
 	}, 1500);
 
 	function onKeyDown(e: any) {
-		if (
-			typable &&
-			/^([A-Za-z0-9 ]|Enter|Backspace)$/.test(e.key) &&
-			document.activeElement === textArea
-		) {
+		if (typable && /^([A-Za-z0-9 ]|Enter|Backspace)$/.test(e.key)) {
 			let textToAdd = '';
 			if (e.key == 'Backspace') {
 				if (command.length > 0) {
@@ -299,7 +295,7 @@
 		margin: 0px 0px 0px 0px;
 		box-shadow: 0px 0px 0px 0px;
 		display: inline;
-		padding-bottom: 10px
+		padding-bottom: 10px;
 	}
 	.terminal-text {
 		margin-left: 10px;
